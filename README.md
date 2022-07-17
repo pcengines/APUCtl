@@ -1,6 +1,6 @@
 # APUCtl
 
-PC Engines APU tool to controls your hardware from the command line. Like wifi on/off hardware switch and your simcard slot selection.
+PC Engines APU tool to control your hardware from the command line. Like wifi on/off hardware switch and your simcard slot selection.
 
 ## Info
 
