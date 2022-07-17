@@ -20,12 +20,12 @@ if [[ "$#" == "1" ]]; then
     fi
 
 
-    echo 386 > /sys/class/gpio/export 2>/dev/null
+#    echo 386 > /sys/class/gpio/export 2>/dev/null
 
-    if [ $? -ne 0 ]; then
-        echo "no access to gpio"
-        exit 3
-    fi
+#    if [ $? -ne 0 ]; then
+#        echo "no access to gpio"
+#        exit 3
+#    fi
 
     echo 387 > /sys/class/gpio/export
     echo 391 > /sys/class/gpio/export
@@ -99,7 +99,7 @@ if [[ "$#" == "1" ]]; then
 else
     echo "usage: apuctl command"
     echo
-    echo " status         show status of the wifi and the simcard"
+    echo " status         show status of the wifi and the simcards slot"
     echo " on             enable  mPCIe wifi transmission"
     echo " off            disable mPCIe wifi transmission"
     echo " one-on         enable  mPCIe2 wifi transmission"
