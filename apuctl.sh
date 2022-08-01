@@ -27,20 +27,22 @@ if [[ "$#" == "1" ]]; then
 #        exit 3
 #    fi
 
-    echo 387 > /sys/class/gpio/export
-    echo 391 > /sys/class/gpio/export
-    echo 392 > /sys/class/gpio/export
-    echo 410 > /sys/class/gpio/export
-    echo out > /sys/class/gpio/gpio386/direction
-    echo out > /sys/class/gpio/gpio387/direction
-    echo out > /sys/class/gpio/gpio391/direction
-    echo out > /sys/class/gpio/gpio392/direction
-    echo out > /sys/class/gpio/gpio410/direction
-    echo 1 > /sys/class/gpio/gpio386/active_low
-    echo 1 > /sys/class/gpio/gpio387/active_low
-    echo 1 > /sys/class/gpio/gpio391/active_low
-    echo 1 > /sys/class/gpio/gpio392/active_low
-    echo 1 > /sys/class/gpio/gpio410/active_low
+    if [[ "$1" == "init" ]]; then
+        echo 387 > /sys/class/gpio/export
+        echo 391 > /sys/class/gpio/export
+        echo 392 > /sys/class/gpio/export
+        echo 410 > /sys/class/gpio/export
+        echo out > /sys/class/gpio/gpio386/direction
+        echo out > /sys/class/gpio/gpio387/direction
+        echo out > /sys/class/gpio/gpio391/direction
+        echo out > /sys/class/gpio/gpio392/direction
+        echo out > /sys/class/gpio/gpio410/direction
+        echo 1 > /sys/class/gpio/gpio386/active_low
+        echo 1 > /sys/class/gpio/gpio387/active_low
+        echo 1 > /sys/class/gpio/gpio391/active_low
+        echo 1 > /sys/class/gpio/gpio392/active_low
+        echo 1 > /sys/class/gpio/gpio410/active_low
+    fi
 
     sim=$(cat /sys/class/gpio/gpio410/value)
     wifi1=$(cat /sys/class/gpio/gpio391/value)
@@ -99,6 +101,7 @@ if [[ "$#" == "1" ]]; then
 else
     echo "usage: apuctl command"
     echo
+    echo " init           initialize gpio's"
     echo " status         show status of the wifi and the simcards slot"
     echo " on             enable  mPCIe wifi transmission"
     echo " off            disable mPCIe wifi transmission"
