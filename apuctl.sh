@@ -37,8 +37,8 @@ if [[ "$#" == "1" ]]; then
         echo out > /sys/class/gpio/gpio391/direction
         echo out > /sys/class/gpio/gpio392/direction
         echo out > /sys/class/gpio/gpio410/direction
-        echo 1 > /sys/class/gpio/gpio386/active_low
-        echo 1 > /sys/class/gpio/gpio387/active_low
+        echo 0 > /sys/class/gpio/gpio386/active_low
+        echo 0 > /sys/class/gpio/gpio387/active_low
         echo 1 > /sys/class/gpio/gpio391/active_low
         echo 1 > /sys/class/gpio/gpio392/active_low
         echo 1 > /sys/class/gpio/gpio410/active_low
