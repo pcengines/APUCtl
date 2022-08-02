@@ -28,6 +28,7 @@ if [[ "$#" == "1" ]]; then
 #    fi
 
     if [[ "$1" == "init" ]]; then
+        echo 386 > /sys/class/gpio/export
         echo 387 > /sys/class/gpio/export
         echo 391 > /sys/class/gpio/export
         echo 392 > /sys/class/gpio/export
