@@ -37,11 +37,11 @@ if [[ "$#" == "1" ]]; then
         echo out > /sys/class/gpio/gpio391/direction
         echo out > /sys/class/gpio/gpio392/direction
         echo out > /sys/class/gpio/gpio410/direction
-        echo 0 > /sys/class/gpio/gpio386/active_low
-        echo 0 > /sys/class/gpio/gpio387/active_low
-        echo 1 > /sys/class/gpio/gpio391/active_low
-        echo 1 > /sys/class/gpio/gpio392/active_low
-        echo 1 > /sys/class/gpio/gpio410/active_low
+        echo 1 > /sys/class/gpio/gpio386/active_low
+        echo 1 > /sys/class/gpio/gpio387/active_low
+        echo 0 > /sys/class/gpio/gpio391/active_low
+        echo 0 > /sys/class/gpio/gpio392/active_low
+        echo 0 > /sys/class/gpio/gpio410/active_low
     fi
 
     sim=$(cat /sys/class/gpio/gpio410/value)
@@ -84,15 +84,15 @@ if [[ "$#" == "1" ]]; then
     elif [[ "$1" == "sim-one" ]]; then
         echo 0 > /sys/class/gpio/gpio410/value
     elif [[ "$1" == "sim-two" ]]; then
-        echo 1 > /sys/class/gpio/gpio410/value
+        echo 0 > /sys/class/gpio/gpio410/value
     elif [[ "$1" == "one-reset" ]]; then
-        echo 1 > /sys/class/gpio/gpio386/value
-        sleep 1
         echo 0 > /sys/class/gpio/gpio386/value
-    elif [[ "$1" == "two-reset" ]]; then
-        echo 1 > /sys/class/gpio/gpio387/value
         sleep 1
+        echo 1 > /sys/class/gpio/gpio386/value
+    elif [[ "$1" == "two-reset" ]]; then
         echo 0 > /sys/class/gpio/gpio387/value
+        sleep 1
+        echo 1 > /sys/class/gpio/gpio387/value
     elif [[ "$1" == "coldboot" ]]; then
         for i in s u; do echo $i | sudo tee /proc/sysrq-trigger > /dev/null 2>&1; sleep 15; done
         echo -ne "\xe" | dd of=/dev/port bs=1 count=1 seek=$((0xcf9))
